@@ -1,5 +1,5 @@
 import { CssBaseline } from '@mui/material';
-import { LazyRouter } from './routes/LazyRouter';
+import { LazyRouter } from './routes/router/LazyRouter';
 
 function App() {
   return (

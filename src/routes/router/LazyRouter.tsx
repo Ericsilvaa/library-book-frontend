@@ -1,19 +1,37 @@
-import { lazyLoad } from '../utils/LazyLoad';
-import BaseLayout from '@/layouts/BaseLayout';
 import { Route, Routes } from 'react-router-dom';
 import { paths } from '../paths';
+
+import SiteBaseLayout from '../../layouts/Institucional/BaseLayout';
+import LibraryBaseLayout from '../../layouts/Library/BaseLayout';
+import { lazyLoad } from '../utils/LazyLoad';
 
 export const routeProtections = {
   ADMIN: 'ADMIN',
   LOGGED_IN: 'LOGGED_IN'
 };
 
-const LazyHomePage = lazyLoad(() => import('@/pages/Home'));
+// Site Institucional
+const LazySiteHomePage = lazyLoad(() => import('../../pages/Home'));
+
+// Site Biblioteca
+const LazyHomePage = lazyLoad(() => import('../../pages/library/Home'));
+const LazyBookPage = lazyLoad(() => import('../../pages/library/Book'));
 
 export function LazyRouter() {
   return (
     <Routes>
       {/* Unprotected Routes  */}
+      {/* SITE */}
+      <Route
+        path={paths.institution.home.index}
+        element={
+          <SiteBaseLayout>
+            <LazySiteHomePage />
+          </SiteBaseLayout>
+        }
+      />
+
+      {/* LIBRARY */}
       {/* 
         <Route path={paths.auth.register} element={<Register />} />
         <Route path={paths.auth.login.index} element={<Login />} />
@@ -23,13 +41,23 @@ export function LazyRouter() {
 
       {/* Protected Routes */}
       <Route
-        path={paths.home}
+        path={paths.library.home}
         element={
-          <div className='PROTECTED ROUTE'>
-            <BaseLayout>
-              <LazyHomePage />
-            </BaseLayout>
-          </div>
+          // <div className='PROTECTED ROUTE'>
+          <LibraryBaseLayout>
+            <LazyHomePage />
+          </LibraryBaseLayout>
+          // </div>
+        }
+      />
+      <Route
+        path={paths.library.book.index}
+        element={
+          // <div className='PROTECTED ROUTE'>
+          <LibraryBaseLayout>
+            <LazyBookPage />
+          </LibraryBaseLayout>
+          // </div>
         }
       />
     </Routes>

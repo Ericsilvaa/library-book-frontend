@@ -1,3 +1,8 @@
-export default function HomePage() {
-  return <div>HomePage</div>;
+export default function SiteHomePage() {
+  return (
+    <div>
+      <h1>Seja Bem Vindo A IBHJ</h1>
+      <p>Site Home Page</p>
+    </div>
+  );
 }

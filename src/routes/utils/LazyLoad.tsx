@@ -1,4 +1,5 @@
-import { Suspense, lazy } from 'react';
+import { Suspense } from 'react';
+import { lazy } from '../react-lazy-with-reload';
 
 export const lazyLoad = (importFunc: any) => {
   const Component = lazy(importFunc);
