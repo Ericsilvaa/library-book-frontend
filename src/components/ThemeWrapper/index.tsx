@@ -14,7 +14,6 @@ export default function ThemeWrapper({ children }: ThemeWrapperProps) {
 
   useEffect(() => {
     if (!data) {
-      console.log('🚀 ~ useEffect ~ data:', data);
       dispath(getBranding());
     }
   }, [data]);

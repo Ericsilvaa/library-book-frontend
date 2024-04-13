@@ -1,7 +1,7 @@
+import storage from 'redux-persist/lib/storage';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import brandingReducer from '../features/branding/brandingSlice';
+import { bookReducer, brandingReducer } from './reducers';
 
 const persistConfig = {
   key: 'root',
@@ -10,8 +10,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   // reducers
-  branding: brandingReducer
-  // book: bookReducer,
+  branding: brandingReducer,
+  book: bookReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -24,7 +24,6 @@ export const store = configureStore({
       serializableCheck: false
     })
 });
-
 // .concat(unauthorizedHandlerMiddleware)
 
 export const persistor = persistStore(store);

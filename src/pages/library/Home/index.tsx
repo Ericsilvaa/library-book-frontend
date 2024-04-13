@@ -130,32 +130,6 @@ export default function LibraryHomePage() {
             })}
           </List>
         </Grid>
-        <Grid>
-          <List
-            sx={{
-              display: 'grid',
-              gap: 2,
-              gridTemplateColumns: 'repeat(5, minmax(210px, 1fr))'
-            }}
-          >
-            {/* array of book */}
-            {books.map(({ id, title, description, url }: any) => (
-              <ListItem key={id} disablePadding sx={{ marginBottom: 1 }}>
-                <Card sx={{ width: 210 }}>
-                  <CardMedia sx={{ height: 250 }} image={url} />
-                  <CardContent>
-                    <Typography gutterBottom variant='h5' component='div'>
-                      {title}
-                    </Typography>
-                    <Typography variant='body2' color='text.secondary'>
-                      {description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </ListItem>
-            ))}
-          </List>
-        </Grid>
       </Box>
     </Box>
   );
