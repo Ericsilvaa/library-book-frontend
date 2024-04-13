@@ -16,6 +16,7 @@ const initialState: IBrandingState = {
 export const getBranding = createAsyncThunk<IBrandingResponse>('branding/getBranding', async (_void, thunkAPI) => {
   try {
     const response = await brandingActions.getBranding();
+    console.log('🚀 ~ getBranding ~ response:', response.data);
     return response.data as IBrandingResponse;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.message);
@@ -27,13 +28,13 @@ const brandingSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => {
-      (state.data = null),
-        (state.success = null),
-        (state.data = null),
-        (state.error = null),
-        (state.message = null),
-        (state.code = null),
-        (state.isLoading = false);
+      state.data = null;
+      state.completed_at = null;
+      state.isLoading = false;
+      state.success = null;
+      state.code = null;
+      state.message = null;
+      state.error = null;
     }
   },
   extraReducers: (builder) => {

@@ -1,27 +1,23 @@
 import { ThemeProvider, createTheme } from '@mui/material';
 import theme from '../../theme/themes';
-import { ReactNode } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { getBranding } from '../../features/branding/brandingSlice';
+import { ReactNode, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBranding } from '../../features/branding/brandingSlice';
 
 interface ThemeWrapperProps {
   children: ReactNode;
 }
 
 export default function ThemeWrapper({ children }: ThemeWrapperProps) {
-  // const dispath = useDispatch<any>();
-  // const { data } = useSelector((state: any) => state.branding);
+  const dispath = useDispatch<any>();
+  const { data } = useSelector((state: any) => state.branding);
 
-  const data = {
-    color_primary: '',
-    color_secondary: ''
-  };
-
-  // useEffect(() => {
-  //   if (!data) {
-  //     dispath(getBranding());
-  //   }
-  // }, [data]);
+  useEffect(() => {
+    if (!data) {
+      console.log('🚀 ~ useEffect ~ data:', data);
+      dispath(getBranding());
+    }
+  }, [data]);
 
   const dynamicTheme = createTheme({
     ...theme,
