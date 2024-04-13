@@ -2,8 +2,9 @@ import { Route, Routes } from 'react-router-dom';
 import { paths } from '../paths';
 
 import SiteBaseLayout from '../../layouts/Institucional/BaseLayout';
-import LibraryBaseLayout from '../../layouts/Library/BaseLayout';
+
 import { lazyLoad } from '../utils/LazyLoad';
+import LibraryHomeLayout from '../../layouts/Library/Home';
 
 export const routeProtections = {
   ADMIN: 'ADMIN',
@@ -44,9 +45,9 @@ export function LazyRouter() {
         path={paths.library.home}
         element={
           // <div className='PROTECTED ROUTE'>
-          <LibraryBaseLayout>
+          <LibraryHomeLayout>
             <LazyHomePage />
-          </LibraryBaseLayout>
+          </LibraryHomeLayout>
           // </div>
         }
       />
@@ -54,9 +55,9 @@ export function LazyRouter() {
         path={paths.library.book.index}
         element={
           // <div className='PROTECTED ROUTE'>
-          <LibraryBaseLayout>
+          <LibraryHomeLayout>
             <LazyBookPage />
-          </LibraryBaseLayout>
+          </LibraryHomeLayout>
           // </div>
         }
       />

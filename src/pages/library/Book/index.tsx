@@ -1,6 +1,6 @@
 import { IBook } from '@/features/book/IBook';
 import { getBooks } from '../../../features/book/bookSlice';
-import { Box, Typography } from '@mui/material';
+import { Box, CircularProgress, Grid, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSearchParams, useLocation, useNavigate } from 'react-router-dom';
@@ -21,6 +21,8 @@ export default function BookPage() {
       search: `?${createSearchParams(formParams)}`
     });
   };
+
+  console.log('books', books);
 
   useEffect(() => {
     if (!location.search) {
@@ -49,7 +51,9 @@ export default function BookPage() {
       </Box>
 
       {isLoading ? (
-        <Typography variant='body1'>Carregando...</Typography>
+        <Grid item xs={12} textAlign='center' mt={2}>
+          <CircularProgress color='primary' />
+        </Grid>
       ) : (
         books.map((book: IBook) => (
           <Box key={book.id} my={2} p={2} sx={{ border: '1px solid #ccc' }}>
