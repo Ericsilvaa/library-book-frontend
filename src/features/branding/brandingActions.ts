@@ -1,6 +1,6 @@
-import { apiInstance } from '@/api';
-import { HttpClientResponse } from '@/api/types';
-import { headerConfig } from '@/utils/headerConfig';
+import { apiInstance } from '../../api';
+import { HttpClientResponse } from '../../api/types';
+import { headerConfig } from '../../utils/headerConfig';
 
 const getBranding = async (): Promise<HttpClientResponse> => {
   try {

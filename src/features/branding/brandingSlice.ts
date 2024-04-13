@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IBrandingResponse, IBrandingState } from './interfaces';
 import brandingActions from './brandingActions';
-import { STATUS_CODES } from '@/api/constants';
+import { STATUS_CODES } from '../../api/constants';
 
 const initialState: IBrandingState = {
   data: null,
